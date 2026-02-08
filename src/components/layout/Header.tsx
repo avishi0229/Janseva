@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Globe, Sun, Moon, ZoomIn, ZoomOut } from "lucide-react";
+import { Menu, X, Phone, Globe, ZoomIn, ZoomOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
@@ -30,15 +30,15 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
         Skip to main content
       </a>
 
-      <nav className="section-container py-4" aria-label="Main navigation">
+      <nav className="section-container py-3" aria-label="Main navigation">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center gap-3 font-bold text-xl md:text-2xl text-primary focus-visible:ring-4 rounded-lg"
+          <Link
+            to="/"
+            className="flex items-center gap-3 font-bold text-lg md:text-xl text-primary focus-visible:ring-4 rounded-lg"
             aria-label="JANSEVA Home"
           >
-            <div className="w-12 h-12 rounded-xl hero-gradient flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-11 h-11 rounded-xl hero-gradient flex items-center justify-center text-white font-bold text-sm">
               JS
             </div>
             <span className="hidden sm:inline">JANSEVA</span>
@@ -50,10 +50,11 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`px-4 py-2 rounded-xl text-lg font-medium transition-colors touch-target flex items-center justify-center
-                  ${isActive(link.href) 
-                    ? "bg-primary text-primary-foreground" 
-                    : "text-foreground hover:bg-muted"
+                className={`px-4 py-2 rounded-xl text-base font-medium transition-colors touch-target flex items-center justify-center
+                  ${
+                    isActive(link.href)
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-muted"
                   }`}
               >
                 {link.label}
@@ -68,24 +69,32 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
               size="icon"
               onClick={onToggleLargeText}
               className="touch-target"
-              aria-label={isLargeText ? "Use normal text size" : "Use larger text size"}
+              aria-label={
+                isLargeText ? "Use normal text size" : "Use larger text size"
+              }
             >
-              {isLargeText ? <ZoomOut className="w-6 h-6" /> : <ZoomIn className="w-6 h-6" />}
+              {isLargeText ? (
+                <ZoomOut className="w-5 h-5" />
+              ) : (
+                <ZoomIn className="w-5 h-5" />
+              )}
             </Button>
+
             <Button
               variant="ghost"
               size="icon"
               className="touch-target"
               aria-label="Change language"
             >
-              <Globe className="w-6 h-6" />
+              <Globe className="w-5 h-5" />
             </Button>
+
             <Button
               variant="outline"
-              className="gap-2 touch-target"
+              className="gap-2 touch-target text-sm"
               aria-label="Emergency helpline"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-4 h-4" />
               <span className="hidden xl:inline">1800-XXX-XXXX</span>
             </Button>
           </div>
@@ -100,13 +109,17 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div 
+          <div
             id="mobile-menu"
             className="lg:hidden mt-4 pb-4 border-t border-border pt-4 animate-fade-in"
           >
@@ -116,24 +129,32 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
                   key={link.href}
                   to={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`px-5 py-4 rounded-xl text-lg font-medium transition-colors
-                    ${isActive(link.href) 
-                      ? "bg-primary text-primary-foreground" 
-                      : "text-foreground hover:bg-muted"
+                  className={`px-5 py-3 rounded-xl text-base font-medium transition-colors
+                    ${
+                      isActive(link.href)
+                        ? "bg-primary text-primary-foreground"
+                        : "text-foreground hover:bg-muted"
                     }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center gap-2 mt-4 pt-4 border-t border-border">
+
+              <div className="flex items-center gap-1 mt-4 pt-4 border-t border-border">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={onToggleLargeText}
                   className="touch-target"
-                  aria-label={isLargeText ? "Use normal text size" : "Use larger text size"}
+                  aria-label={
+                    isLargeText ? "Use normal text size" : "Use larger text size"
+                  }
                 >
-                  {isLargeText ? <ZoomOut className="w-6 h-6" /> : <ZoomIn className="w-6 h-6" />}
+                  {isLargeText ? (
+                    <ZoomOut className="w-5 h-5" />
+                  ) : (
+                    <ZoomIn className="w-5 h-5" />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
@@ -141,14 +162,15 @@ const Header = ({ onToggleLargeText, isLargeText }: HeaderProps) => {
                   className="touch-target"
                   aria-label="Change language"
                 >
-                  <Globe className="w-6 h-6" />
+                  <Globe className="w-5 h-5" />
                 </Button>
+
                 <Button
                   variant="outline"
-                  className="flex-1 gap-2 touch-target"
+                  className="flex-1 gap-2 touch-target text-sm"
                   aria-label="Emergency helpline"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4" />
                   <span>1800-XXX-XXXX</span>
                 </Button>
               </div>

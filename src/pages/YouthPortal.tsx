@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { 
-  Users, 
-  Award, 
-  MapPin, 
-  Camera, 
-  CheckCircle2, 
+import {
+  Users,
+  Award,
+  MapPin,
+  Camera,
+  CheckCircle2,
   Clock,
   Trophy,
   Star,
   ArrowRight,
   LogIn,
-  UserPlus
+  UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
@@ -18,7 +18,6 @@ import StatCard from "@/components/ui/StatCard";
 
 const YouthPortal = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
 
   const stats = [
     { title: "Active Volunteers", value: 856, icon: Users, color: "primary" as const },
@@ -28,20 +27,20 @@ const YouthPortal = () => {
   ];
 
   const leaderboard = [
-    { rank: 1, name: "Priya Sharma", points: 2450, verifications: 124, badge: "🏆 Gold Champion" },
-    { rank: 2, name: "Rahul Verma", points: 2180, verifications: 108, badge: "🥈 Silver Star" },
-    { rank: 3, name: "Ananya Patel", points: 1950, verifications: 97, badge: "🥉 Bronze Hero" },
-    { rank: 4, name: "Vikram Singh", points: 1720, verifications: 86, badge: "⭐ Rising Star" },
-    { rank: 5, name: "Sneha Reddy", points: 1580, verifications: 79, badge: "⭐ Rising Star" },
+    { rank: 1, name: "Priya Sharma", points: 2450, badge: "🏆 Gold Champion" },
+    { rank: 2, name: "Rahul Verma", points: 2180, badge: "🥈 Silver Star" },
+    { rank: 3, name: "Ananya Patel", points: 1950, badge: "🥉 Bronze Hero" },
+    { rank: 4, name: "Vikram Singh", points: 1720, badge: "⭐ Rising Star" },
+    { rank: 5, name: "Sneha Reddy", points: 1580, badge: "⭐ Rising Star" },
   ];
 
   const badges = [
-    { name: "First Verification", icon: "🎯", description: "Complete your first issue verification" },
-    { name: "Community Hero", icon: "🦸", description: "Verify 25 issues in your ward" },
-    { name: "Speed Demon", icon: "⚡", description: "Verify 5 issues in a single day" },
-    { name: "Photo Pro", icon: "📸", description: "Upload 50 high-quality verification photos" },
-    { name: "Ward Champion", icon: "🏆", description: "Top verifier in your ward for a month" },
-    { name: "Mentor", icon: "🎓", description: "Help 5 new volunteers get started" },
+    { name: "First Verification", icon: "🎯" },
+    { name: "Community Hero", icon: "🦸" },
+    { name: "Speed Demon", icon: "⚡" },
+    { name: "Photo Pro", icon: "📸" },
+    { name: "Ward Champion", icon: "🏆" },
+    { name: "Mentor", icon: "🎓" },
   ];
 
   const pendingTasks = [
@@ -51,7 +50,7 @@ const YouthPortal = () => {
       location: "Ward 3, Near Railway Station",
       reported: "2 hours ago",
       priority: "high",
-      distance: "0.5 km away"
+      distance: "0.5 km away",
     },
     {
       id: "V002",
@@ -59,315 +58,135 @@ const YouthPortal = () => {
       location: "Ward 3, Gandhi Chowk",
       reported: "4 hours ago",
       priority: "medium",
-      distance: "1.2 km away"
-    },
-    {
-      id: "V003",
-      issue: "Garbage pile up",
-      location: "Ward 3, Market Area",
-      reported: "6 hours ago",
-      priority: "high",
-      distance: "0.8 km away"
+      distance: "1.2 km away",
     },
   ];
 
-  // Login/Signup View
   if (!isLoggedIn) {
     return (
       <Layout>
         <div className="section-container">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-secondary/20 text-secondary rounded-full px-6 py-3 text-lg font-semibold mb-6">
-              <Award className="w-6 h-6" />
+          {/* Hero */}
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-secondary/20 text-secondary rounded-full px-4 py-2 text-sm font-semibold mb-4">
+              <Award className="w-5 h-5" />
               Youth Civic Squad
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
               Be the Change Your Community Needs
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Join hundreds of young volunteers who are making their cities better. 
-              Verify issues, earn recognition, and create real impact in your community.
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              Join young volunteers verifying civic issues and creating real impact.
             </p>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {stats.map((stat) => (
-              <StatCard key={stat.title} {...stat} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {stats.map((s) => (
+              <StatCard key={s.title} {...s} />
             ))}
           </div>
 
-          {/* Login/Signup Cards */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-            {/* Login */}
-            <div className="card-accessible space-y-6">
-              <div className="flex items-center gap-3">
-                <LogIn className="w-8 h-8 text-primary" />
-                <h2 className="text-2xl font-bold">Existing Volunteer</h2>
+          {/* Auth Cards */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+            <div className="card-accessible space-y-4">
+              <div className="flex items-center gap-2">
+                <LogIn className="w-6 h-6 text-primary" />
+                <h2 className="text-xl font-semibold">Existing Volunteer</h2>
               </div>
-              <p className="text-muted-foreground text-lg">
-                Already part of the squad? Log in to view your tasks and continue making a difference.
+              <p className="text-sm text-muted-foreground">
+                Log in to continue your community work.
               </p>
-              <div className="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="input-accessible"
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="input-accessible"
-                />
-                <Button 
-                  onClick={() => setIsLoggedIn(true)}
-                  className="btn-primary w-full"
-                >
-                  <LogIn className="w-5 h-5" />
-                  Log In
-                </Button>
-              </div>
+              <input className="input-accessible" placeholder="Email" />
+              <input className="input-accessible" placeholder="Password" />
+              <Button onClick={() => setIsLoggedIn(true)} className="w-full">
+                <LogIn className="w-4 h-4" />
+                Log In
+              </Button>
             </div>
 
-            {/* Signup */}
-            <div className="card-highlight space-y-6">
-              <div className="flex items-center gap-3">
-                <UserPlus className="w-8 h-8 text-secondary" />
-                <h2 className="text-2xl font-bold">Join the Squad</h2>
+            <div className="card-highlight space-y-4">
+              <div className="flex items-center gap-2">
+                <UserPlus className="w-6 h-6 text-secondary" />
+                <h2 className="text-xl font-semibold">Join the Squad</h2>
               </div>
-              <p className="text-muted-foreground text-lg">
-                New here? Sign up to become a Youth Civic Squad volunteer and start making an impact today.
+              <p className="text-sm text-muted-foreground">
+                Sign up and start verifying issues today.
               </p>
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Full name"
-                  className="input-accessible"
-                />
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="input-accessible"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone number"
-                  className="input-accessible"
-                />
-                <select className="input-accessible">
-                  <option value="">Select your ward</option>
-                  {[1, 2, 3, 4, 5, 6].map((w) => (
-                    <option key={w} value={w}>Ward {w}</option>
-                  ))}
-                </select>
-                <Button 
-                  onClick={() => setIsLoggedIn(true)}
-                  className="btn-secondary w-full"
-                >
-                  <UserPlus className="w-5 h-5" />
-                  Sign Up Now
-                </Button>
-              </div>
+              <input className="input-accessible" placeholder="Full Name" />
+              <input className="input-accessible" placeholder="Email" />
+              <input className="input-accessible" placeholder="Phone" />
+              <Button onClick={() => setIsLoggedIn(true)} className="w-full">
+                <UserPlus className="w-4 h-4" />
+                Sign Up
+              </Button>
             </div>
           </div>
 
-          {/* What You Get */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">What You Get</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="card-accessible text-center space-y-4">
-                <Trophy className="w-12 h-12 mx-auto text-secondary" />
-                <h3 className="text-xl font-bold">Recognition</h3>
-                <p className="text-muted-foreground">
-                  Earn badges, climb the leaderboard, and get certificates for your contributions.
-                </p>
-              </div>
-              <div className="card-accessible text-center space-y-4">
-                <Star className="w-12 h-12 mx-auto text-secondary" />
-                <h3 className="text-xl font-bold">Experience</h3>
-                <p className="text-muted-foreground">
-                  Build your resume with real community service experience and leadership skills.
-                </p>
-              </div>
-              <div className="card-accessible text-center space-y-4">
-                <Users className="w-12 h-12 mx-auto text-secondary" />
-                <h3 className="text-xl font-bold">Community</h3>
-                <p className="text-muted-foreground">
-                  Connect with like-minded youth and make lasting friendships while serving.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Badges */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Badges You Can Earn</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {badges.map((badge) => (
-                <div key={badge.name} className="card-accessible text-center space-y-2 p-4">
-                  <span className="text-4xl">{badge.icon}</span>
-                  <p className="font-semibold text-sm">{badge.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Leaderboard Preview */}
-          <div className="card-accessible max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Trophy className="w-7 h-7 text-secondary" />
-              This Month's Leaders
+          {/* Leaderboard */}
+          <div className="card-accessible max-w-xl mx-auto">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Trophy className="w-6 h-6 text-secondary" />
+              This Month’s Leaders
             </h2>
-            <div className="space-y-4">
-              {leaderboard.slice(0, 3).map((user) => (
-                <div 
-                  key={user.rank}
-                  className="flex items-center gap-4 p-4 bg-muted rounded-xl"
-                >
-                  <div className={`
-                    w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl
-                    ${user.rank === 1 ? "bg-secondary text-secondary-foreground" : "bg-muted-foreground/20"}
-                  `}>
-                    {user.rank}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-lg">{user.name}</p>
-                    <p className="text-sm text-muted-foreground">{user.badge}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-bold text-xl">{user.points}</p>
-                    <p className="text-sm text-muted-foreground">points</p>
-                  </div>
+            {leaderboard.slice(0, 3).map((u) => (
+              <div key={u.rank} className="flex items-center gap-3 p-3 bg-muted rounded-lg mb-2">
+                <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-sm font-bold">
+                  {u.rank}
+                </span>
+                <div className="flex-1">
+                  <p className="text-sm font-medium">{u.name}</p>
+                  <p className="text-xs text-muted-foreground">{u.badge}</p>
                 </div>
-              ))}
-            </div>
+                <span className="text-sm font-semibold">{u.points}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Layout>
     );
   }
 
-  // Logged In Dashboard
   return (
     <Layout>
       <div className="section-container">
-        {/* Welcome Header */}
-        <div className="flex flex-col md:flex-row justify-between gap-6 mb-8">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome back, Volunteer!</h1>
-            <p className="text-xl text-muted-foreground">
-              You've verified 45 issues this month. Keep up the great work!
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="card-accessible py-3 px-6 text-center">
-              <p className="text-3xl font-bold text-primary">1,250</p>
-              <p className="text-sm text-muted-foreground">Your Points</p>
-            </div>
-            <div className="card-accessible py-3 px-6 text-center">
-              <p className="text-3xl font-bold text-success">#12</p>
-              <p className="text-sm text-muted-foreground">Your Rank</p>
-            </div>
-          </div>
-        </div>
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">
+          Welcome back, Volunteer!
+        </h1>
+        <p className="text-base text-muted-foreground mb-6">
+          You’ve verified 45 issues this month.
+        </p>
 
-        {/* Your Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <StatCard title="Verifications" value={45} icon={CheckCircle2} color="success" />
-          <StatCard title="Hours Contributed" value={28} icon={Clock} color="info" />
-          <StatCard title="Badges Earned" value={4} icon={Award} color="warning" />
-          <StatCard title="Ward Rank" value={3} prefix="#" icon={Trophy} color="primary" />
+          <StatCard title="Hours" value={28} icon={Clock} color="info" />
+          <StatCard title="Badges" value={4} icon={Award} color="warning" />
+          <StatCard title="Rank" value={3} prefix="#" icon={Trophy} color="primary" />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Pending Tasks */}
-          <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <MapPin className="w-7 h-7 text-primary" />
-              Tasks Near You
-            </h2>
-            <div className="space-y-4">
-              {pendingTasks.map((task) => (
-                <div key={task.id} className="card-interactive">
-                  <div className="flex flex-col md:flex-row gap-4 justify-between">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className={`
-                          px-3 py-1 rounded-full text-sm font-semibold
-                          ${task.priority === "high" ? "bg-destructive-light text-destructive" : "bg-warning-light text-warning-foreground"}
-                        `}>
-                          {task.priority === "high" ? "High Priority" : "Medium"}
-                        </span>
-                        <span className="text-sm text-muted-foreground">{task.reported}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold">{task.issue}</h3>
-                      <p className="text-muted-foreground flex items-center gap-2">
-                        <MapPin className="w-5 h-5" />
-                        {task.location}
-                      </p>
-                      <p className="text-sm text-primary font-medium">{task.distance}</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Button className="btn-primary">
-                        <Camera className="w-5 h-5" />
-                        Verify Now
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <Button variant="outline" className="btn-accessible border-2 w-full">
-              View All Tasks
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </div>
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <MapPin className="w-6 h-6 text-primary" />
+          Tasks Near You
+        </h2>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Your Badges */}
-            <div className="card-accessible">
-              <h3 className="text-xl font-bold mb-4">Your Badges</h3>
-              <div className="grid grid-cols-4 gap-2">
-                {badges.slice(0, 4).map((badge) => (
-                  <div 
-                    key={badge.name} 
-                    className="aspect-square rounded-xl bg-muted flex items-center justify-center text-2xl"
-                    title={badge.name}
-                  >
-                    {badge.icon}
-                  </div>
-                ))}
-              </div>
-              <Button variant="ghost" className="w-full mt-4 text-primary">
-                View All Badges
+        <div className="space-y-3">
+          {pendingTasks.map((t) => (
+            <div key={t.id} className="card-interactive p-4">
+              <p className="text-sm font-semibold">{t.issue}</p>
+              <p className="text-xs text-muted-foreground">{t.location}</p>
+              <p className="text-xs text-primary">{t.distance}</p>
+              <Button size="sm" className="mt-2">
+                <Camera className="w-4 h-4" />
+                Verify
               </Button>
             </div>
-
-            {/* Leaderboard */}
-            <div className="card-accessible">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Trophy className="w-6 h-6 text-secondary" />
-                Leaderboard
-              </h3>
-              <div className="space-y-3">
-                {leaderboard.map((user) => (
-                  <div 
-                    key={user.rank}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted transition-colors"
-                  >
-                    <span className="w-6 text-center font-bold">{user.rank}</span>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium truncate">{user.name}</p>
-                    </div>
-                    <span className="font-bold">{user.points}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
+
+        <Button variant="outline" className="w-full mt-4">
+          View All Tasks
+          <ArrowRight className="w-4 h-4" />
+        </Button>
       </div>
     </Layout>
   );
